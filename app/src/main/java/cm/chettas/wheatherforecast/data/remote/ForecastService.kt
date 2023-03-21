@@ -1,5 +1,6 @@
 package cm.chettas.wheatherforecast.data.remote
 
+import cm.chettas.wheatherforecast.BuildConfig
 import cm.chettas.wheatherforecast.data.WheatherForecastResponse
 import cm.chettas.wheatherforecast.util.Constants
 import retrofit2.Response
@@ -13,7 +14,7 @@ interface ForecastService {
     @GET("forecast")
     suspend fun getForecastByState(
         @Query("q") state: String,
-        @Query("appid") appId: String = Constants.API_KEY,
+        @Query("appid") appId: String = BuildConfig.API_KEY,
         @Query("units") unit: String = "metric",
         @Query("exclude") exclude: String = "current,minutely,hourly,alerts"
     ): Response<WheatherForecastResponse>

@@ -24,6 +24,12 @@ android {
                         "room.expandProjection":"true"]
             }
         }
+        def secretsProperties = new Properties()
+        secretsProperties.load(
+                project.rootProject
+                .file("local.properties").newDataInputStream()
+        )
+        buildConfigField("String", "API_KEY", "\"${secretsProperties.getProperty('API_KEY')}\"")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     kapt {
